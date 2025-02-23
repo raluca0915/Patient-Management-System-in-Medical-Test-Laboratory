@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalii Medic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .medic-details {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .medic-details h2 {
+            color: #333;
+            font-size: 22px;
+        }
+        .medic-details p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .medic-detail {
+            margin-bottom: 10px;
+        }
+        .medic-detail strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="medic-details">
+        <h2>Detalii despre medic</h2>
+        <div class="medic-detail"><strong>Nume:</strong> {{medic['nume']}}</div>
+        <div class="medic-detail"><strong>Prenume:</strong> {{medic['prenume']}}</div>
+        {% for lab in laboratoare %}
+                {% if lab['laborator_id'] == medic['laborator'] %}
+                    <div class="medic-detail"><strong>Laborator:</strong> {{ lab['nume'] }} </div>
+                {% endif %}
+        {% endfor %}
+        
+
+    </div>
+
+</body>
+</html>

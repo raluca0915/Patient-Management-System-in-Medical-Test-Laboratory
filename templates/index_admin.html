@@ -1,0 +1,42 @@
+<html>
+    <body>
+        <p>Hello, administrator <b>{{name}}</b>. ID-ul tau este {{id}}.</p>
+
+        Lista de pacienti este:
+        <table>
+            <thead>
+                <tr>
+                    <th>Pacient ID</th>
+                    <th>Nume</th>
+                    <th>Prenume</th>
+                    <th>Data nasterii</th>
+                    <th>Sex</th>
+                    <th>Telefon</th>
+                    <th>CNP</th>
+                    <th>Adresa</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pacient in pacienti %}
+                    <tr>
+                        <td>{{pacient['pacient_id']}}</td>
+                        <td><a href="/pacient/{{pacient['pacient_id']}}">{{pacient['nume']}}</a></td>
+                        <td>{{pacient['prenume']}}</td>
+                        <td>{{pacient['data_nasterii']}}</td>
+                        <td>{{pacient['sex']}}</td>
+                        <td>{{pacient['adresa']}}</td>
+                        <td>{{pacient['telefon']}}</td>
+                        <td>{{pacient['cnp']}}</td>
+                        <td><a href="/pacient/update/{{pacient['pacient_id']}}">Editare date</a> </td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+
+        <br> 
+        <a href="/adaugare_pacient"> Adaugare pacient</a>
+
+    </body>
+</html>

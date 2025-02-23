@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editare date Medic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-container {
+            background-color: #fff;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="textarea"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        input[type="submit"] {
+            background-color: #48b6c5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #3a9ca1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Editare date Medic</h2>
+
+        <form action="/editare_medic_form/{{medic['id']}}" method="post">
+            <label for="nume">Nume:</label>
+            <input type="text" id="nume" name="nume" value="{{medic['nume']}}" required>
+
+            <label for="prenume">Prenume:</label>
+            <input type="text" id="prenume" name="prenume" value="{{medic['prenume']}}" required>
+
+            <label for="laborator">Laborator:</label>
+            <select name="laborator" id="laborator"  required>
+                {% for lab in laboratoare %}
+                {% if lab['laborator_id'] == medic['laborator'] %}
+                    <option value="{{ lab['laborator_id'] }}" selected>{{ lab['nume'] }}</option>
+                {% else %}
+                    <option value="{{ lab['laborator_id'] }}">{{ lab['nume'] }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+
+            <input type="submit" value="Salvare date">
+        </form>
+    </div>
+
+</body>
+</html>
+

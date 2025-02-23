@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efectuare Programare</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+        .sidebar {
+            background: #48b6c5;
+            color: white;
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            padding: 20px 10px;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 3px solid transparent;
+            transition: background 0.3s, border-left 0.3s;
+        }
+        .sidebar a.active, .sidebar a:hover {
+            border-left: 3px solid #f7931e;
+            background: #1a1a1a;
+        }
+        .content {
+            margin-left: 200px;
+            padding: 20px;
+        }
+        .header {
+            background-color: #fff;
+            padding: 10px 20px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        form select, form input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        form button {
+            background: #48b6c5;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        form button:hover {
+            background: #1a8c96;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="/dashboard_pacient">Pagina principala</a>
+        <a href="/date_personale">Date personale</a>
+        <a href="/lista_analize_pacient/{{pacient['id']}}">Analizele mele</a>
+        <a href="/lista_programari_pacient/{{pacient['id']}}">Programarile mele</a>
+        <a href="/programare/{{pacient['id']}}" class="active">Efectuare programare</a>
+        <a href="/logout">Logout</a>
+      </div>
+
+    <div class="content">
+        <div class="header">
+            <h1>Efectuare Programare</h1>
+        </div>
+        <form method="POST">
+            <label for="medic_id">Alege medicul:</label>
+            <select id="medic_id" name="medic_id">
+                {% for medic in medici %}
+                <option value="{{ medic['medic_id'] }}">{{ medic['nume'] }} {{ medic['prenume'] }}</option>
+                {% endfor %}
+            </select>
+            <label for="data_programare">Alege data:</label>
+            <input type="date" id="data_programare" name="data_programare">
+            <button type="submit">Programează</button>
+        </form>
+    </div>
+</body>
+</html>

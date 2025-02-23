@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalii Laborator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .laborator-details {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .laborator-details h2 {
+            color: #333;
+            font-size: 22px;
+        }
+        .laborator-details p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .laborator-detail {
+            margin-bottom: 10px;
+        }
+        .laborator-detail strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="laborator-details">
+        <h2>Detalii despre laborator</h2>
+        <div class="laborator-detail"><strong>Nume:</strong> {{laborator['nume']}}</div>
+        <div class="laborator-detail"><strong>Adresa:</strong> {{laborator['adresa']}}</div>
+        <div class="laborator-detail"><strong>Telefon:</strong> {{laborator['telefon']}}</div>
+    </div>
+
+</body>
+</html>

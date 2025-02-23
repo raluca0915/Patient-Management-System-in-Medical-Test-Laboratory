@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista analize</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .buletin-details {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .buletin-details h2 {
+            color: #333;
+            font-size: 22px;
+        }
+        .buletin-details p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .buletin-detail {
+            margin-bottom: 10px;
+        }
+        .buletin-detail strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="buletin-details">
+        <h2>Lista analize</h2>
+        {% for analiza in lista_analize %}
+            <div class="buletin-detail"><strong>Nume analiza:</strong> {{ analiza['nume_analiza'] }} </div>
+            <div class="buletin-detail"><strong>Rezultat:</strong> {{ analiza['rezultat'] }} </div>
+            <div class="buletin-detail"><strong>Unitate masura:</strong> {{ analiza['unitate_masura'] }} </div>
+        {% endfor %}
+        
+
+    </div>
+
+</body>
+</html>

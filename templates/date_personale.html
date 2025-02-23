@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date personale pacient</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+        color: #333;
+    }
+    .sidebar {
+        background: #48b6c5;
+        color: white;
+        width: 200px;
+        height: 100vh;
+        position: fixed;
+        padding: 20px 10px;
+    }
+    .sidebar a {
+        text-decoration: none;
+        color: white;
+        display: block;
+        padding: 10px;
+        margin: 10px 0;
+        border-left: 3px solid transparent;
+        transition: background 0.3s, border-left 0.3s;
+    }
+    .sidebar a.active, .sidebar a:hover {
+        border-left: 3px solid #f7931e;
+        background: #1a1a1a;
+    }
+    .content {
+        margin-left: 200px;
+        padding: 20px;
+    }
+    .header {
+        background-color: #fff;
+        padding: 10px 20px;
+        border-bottom: 2px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .header .user-greeting {
+        font-size: 20px;
+    }
+    .table-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 80%;
+        margin-top: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        background: white;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        text-align: left;
+        padding: 8px;
+    }
+    th {
+        background-color: #48b6c5;
+        color: white;
+    }
+</style>
+</head>
+<body>
+<div class="sidebar">
+    <a href="/dashboard_pacient">Pagina principala</a>
+    <a href="/date_personale" class="active">Date personale</a>
+    <a href="/lista_analize_pacient/{{pacient['id']}}">Analizele mele</a>
+    <a href="/lista_programari_pacient/{{pacient['id']}}">Programarile mele</a>
+    <a href="/programare/{{pacient['id']}}">Efectuare programare</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="content">
+    <h1 align="center">Date personale pacient</h1>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nume</th>
+                    <th>Prenume</th>
+                    <th>Data nasterii</th>
+                    <th>Sex</th>
+                    <th>Telefon</th>
+                    <th>CNP</th>
+                    <th>Adresa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{pacient['nume']}}</td>
+                    <td>{{pacient['prenume']}}</td>
+                    <td>{{pacient['data_nasterii']}}</td>
+                    <td>{{pacient['sex']}}</td>
+                    <td>{{pacient['telefon']}}</td>
+                    <td>{{pacient['cnp']}}</td>
+                    <td>{{pacient['adresa']}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalii Analiza</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .medical-test-details {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .medical-test-details h2 {
+            color: #333;
+            font-size: 22px;
+        }
+        .medical-test-details p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .medical-test-detail {
+            margin-bottom: 10px;
+        }
+        .medical-test-detail strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="medical-test-details">
+        <h2>Detalii despre analiza</h2>
+        <div class="medical-test-detail"><strong>Nume Analiza:</strong> {{analiza['nume_analiza']}}</div>
+        {% for cat in categorii %}
+                {% if cat['categorie_id'] == analiza['categorie_id'] %}
+                    <div class="medical-test-detail"><strong>Categorie:</strong> {{ cat['nume_categorie'] }}</div>
+                {% endif %}
+        {% endfor %}
+        <div class="medical-test-detail"><strong>Cost Analiza:</strong> {{analiza['cost_analiza']}}</div>
+    </div>
+
+</body>
+</html>

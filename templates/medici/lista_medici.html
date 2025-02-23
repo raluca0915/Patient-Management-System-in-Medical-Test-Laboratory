@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista Medici</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+        color: #333;
+    }
+    .sidebar {
+        background: #48b6c5;
+        color: white;
+        width: 200px;
+        height: 100vh;
+        position: fixed;
+        padding: 20px 10px;
+    }
+    .sidebar a {
+        text-decoration: none;
+        color: white;
+        display: block;
+        padding: 10px;
+        margin: 10px 0;
+        border-left: 3px solid transparent;
+        transition: background 0.3s, border-left 0.3s;
+    }
+    .sidebar a.active, .sidebar a:hover {
+        border-left: 3px solid #f7931e;
+        background: #1a1a1a;
+    }
+    .content {
+        margin-left: 200px;
+        padding: 20px;
+    }
+    .header {
+        background-color: #fff;
+        padding: 10px 20px;
+        border-bottom: 2px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .header .user-greeting {
+        font-size: 20px;
+    }
+    .medics-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .medic-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: 80%;
+    }
+    .medic-card h2 {
+        margin-top: 0;
+    }
+    .medic-card p {
+        margin: 5px 0;
+    }
+    .actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .actions a, .actions form button {
+        background-color: #48b6c5;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+    .actions a:hover, .actions form button:hover {
+        background-color: #3a9ca1;
+    }
+    form button {
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+    }
+    .add-medic-btn {
+        background-color: #48b6c5;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 16px;
+        display: inline-block;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+    }
+    .add-medic-btn:hover {
+        background-color: #3a9ca1;
+    }
+    .search-container {
+      text-align: center; /* Aligning the search container content to the left */
+      margin-bottom: 20px;
+      margin-left: 20px; /* Optional: Adding some left margin for better spacing */
+    }
+
+    .search-text {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .search-box {
+      padding: 8px;
+      width: 200px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+
+    .search-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #48b6c5;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .search-btn:hover {
+      background-color: #3a9ca1;
+    }
+</style>
+</head>
+<body>
+<div class="sidebar">
+    <a href="/dashboard_administrator">Pagina principala</a>
+    <a href="/lista_pacienti">Pacienti</a>
+    <a href="/lista_medici" class="active">Medici</a>
+    <a href="/lista_analize">Analize</a>
+    <a href="/lista_categorii">Categorii</a>
+    <a href="/lista_buletine">Buletine analiza</a>
+    <a href="/lista_laboratoare">Laboratoare</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="content">
+    <h1 align="center">Lista Medici</h1>
+    <div class="search-container">
+      <div class="search-text">Cauta medici dupa laborator: </div>
+      <form action="/medic/search/" method="GET">
+        <input type="text" placeholder="Scrie laboratorul..." class="search-box" name="search">
+        <button type="submit" class="search-btn">Cauta</button>
+      </form>
+    </div>
+
+    <div class="medics-container">
+        {% for medic in medici %}
+        <div class="medic-card">
+            <h2>{{medic['nume']}} {{medic['prenume']}}</h2>
+            <p><strong>Laborator:</strong> {{medic['laborator']}}</p>
+            <div class="actions">
+                <a href="/medic/{{medic['medic_id']}}">Vizualizare detalii</a>
+                <a href="/medic/update/{{medic['medic_id']}}">Editare</a>
+                <form action="/medic/delete/{{medic['medic_id']}}" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit">Stergere</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div style="text-align: center;">
+        <a href="/adaugare_medic" class="add-medic-btn">Adaugare medic nou</a>
+    </div>
+</div>
+</body>
+</html>

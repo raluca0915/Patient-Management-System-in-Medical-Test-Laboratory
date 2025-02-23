@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Clinic Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('clinic-background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .outer-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            overflow: hidden;
+        }
+        .login-form {
+            flex: 1;
+            padding: 40px;
+        }
+        .vertical-line {
+            border-left: 1px solid #ccc;
+            height: auto;
+            margin: 20px 0;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .cnp-input:invalid {
+            border: 2px solid red;
+        }
+
+        .cnp-input:valid {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-container">
+        <div class="container">
+            <div class="login-form">
+                <h2>Administrator</h2>
+                <form action="/login_administrator_form" method="post">
+                    <div class="form-group">
+                        <label for="nume">Nume:</label>
+                        <input type="text" id="nume" name="nume" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Parola:</label>
+                        <input type="password" id="password" name="password">
+                    </div>
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="login-form">
+                <h2>Pacient</h2>
+                <form action="/login_pacient_form" method="post">
+                    <div class="form-group">
+                        <label for="cnp">CNP:</label>
+                        <input type="text" id="cnp" name="cnp" required autocomplete="off" pattern=".{13}" title="CNP-ul trebuie să conțină 13 caractere" oninvalid="this.setCustomValidity('CNP-ul trebuie să conțină 13 caractere')" oninput="setCustomValidity('')" class="cnp-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Parola:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

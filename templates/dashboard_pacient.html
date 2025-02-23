@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Clinic - Patient Dashboard</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+  }
+  .sidebar {
+    background: #48b6c5;
+    color: white;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    padding: 20px 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  .sidebar a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 15px;
+    margin: 10px 0;
+    border-left: 4px solid transparent;
+    transition: background 0.3s, border-left 0.3s;
+  }
+  .sidebar a.active, .sidebar a:hover {
+    border-left: 4px solid #f7931e;
+    background: #1a1a1a;
+  }
+  .content {
+    margin-left: 250px;
+    padding: 30px;
+    transition: margin-left 0.3s;
+  }
+  .header {
+    background-color: #fff;
+    padding: 20px;
+    border-bottom: 2px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .header .user-greeting {
+    font-size: 22px;
+    color: #333;
+  }
+  h1 {
+    color: #333;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="sidebar">
+  <a href="/dashboard_pacient" class="active">Pagina principala</a>
+  <a href="/date_personale">Date personale</a>
+  <a href="/lista_analize_pacient/{{pacient['id']}}">Analizele mele</a>
+  <a href="/lista_programari_pacient/{{pacient['id']}}">Programarile mele</a>
+  <a href="/programare/{{pacient['id']}}">Efectuare programare</a>
+  <a href="/logout">Logout</a>
+</div>
+<div class="content">
+  <div class="header">
+    <span class="user-greeting">Bine ai venit, pacient {{pacient['nume']}} {{pacient['prenume']}}!</span>
+  </div>
+  <h1>Bine ati venit la clinica!</h1>
+  <!-- Additional content can be added here -->
+</div>
+</body>
+</html>

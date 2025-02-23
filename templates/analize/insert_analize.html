@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaugare Analiza</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-container {
+            background-color: #fff;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        input[type="submit"] {
+            background-color: #48b6c5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #3a9ca1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Adaugare Analiza</h2>
+
+        <form action="/adaugare_analiza_form" method="post">
+            <label for="nume_analiza">Nume Analiza:</label>
+            <input type="text" id="nume_analiza" name="nume_analiza" required>
+
+            <label for="categorie_id">Categorie:</label>
+            <select name="categorie_id" id="categorie_id"  required>
+                {% for cat in categorii %}
+                    <option value="{{ cat['categorie_id'] }}">{{ cat['nume_categorie'] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="cost_analiza">Cost Analiza:</label>
+            <input type="text" id="cost_analiza" name="cost_analiza" required>
+
+            <label for="rezultat">Rezultat:</label>
+            <input type="text" id="rezultat" name="rezultat" required>
+
+            <label for="unitate_masura">Unitate Masura:</label>
+            <input type="text" id="unitate_masura" name="unitate_masura" required>
+
+            <input type="submit" value="Adauga">
+        </form>
+    </div>
+
+</body>
+</html>

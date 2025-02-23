@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalii Pacient</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .patient-details {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .patient-details h2 {
+            color: #333;
+            font-size: 22px;
+        }
+        .patient-details p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .patient-detail {
+            margin-bottom: 10px;
+        }
+        .patient-detail strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="patient-details">
+        <h2>Detalii despre pacient</h2>
+        <div class="patient-detail"><strong>Nume:</strong> {{pacient['nume']}}</div>
+        <div class="patient-detail"><strong>Prenume:</strong> {{pacient['prenume']}}</div>
+        <div class="patient-detail"><strong>Data nasterii:</strong> {{pacient['data_nasterii']}}</div>
+        <div class="patient-detail"><strong>Sex:</strong> {{pacient['sex']}}</div>
+        <div class="patient-detail"><strong>Telefon:</strong> {{pacient['telefon']}}</div>
+        <div class="patient-detail"><strong>CNP:</strong> {{pacient['cnp']}}</div>
+        <div class="patient-detail"><strong>Adresa:</strong> {{pacient['adresa']}}</div>
+    </div>
+
+</body>
+</html>

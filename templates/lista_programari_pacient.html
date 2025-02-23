@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programările Mele</title>
+</head>
+<body>
+    <h1>Programările Mele</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Medic</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for programare in programari %}
+            <tr>
+                <td>{{ programare['data_programare'] }}</td>
+                <td>{{ programare['medic_id'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

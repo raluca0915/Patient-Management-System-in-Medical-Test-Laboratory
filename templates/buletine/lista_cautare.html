@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rezultat cautare</title>
+<style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    .sidebar {
+      background: #48b6c5;
+      color: white;
+      width: 200px;
+      height: 100vh;
+      position: fixed;
+      padding: 20px 10px;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      display: block;
+      padding: 10px;
+      margin: 10px 0;
+      border-left: 3px solid transparent;
+    }
+    .sidebar a.active, .sidebar a:hover {
+      border-left: 3px solid #f7931e;
+      background: #1a1a1a;
+    }
+    .content {
+      margin-left: 200px;
+      padding: 20px;
+    }
+    .header {
+      background-color: #fff;
+      padding: 10px 20px;
+      border-bottom: 2px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header .user-greeting {
+      font-size: 20px;
+      color: #333;
+    }
+
+    .table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 80%; /* Adjust width as needed */
+        margin-top: 20px; /* Space from the top */
+    }
+
+    th, td {
+        border: 1px solid #ddd; /* Add border to table cells */
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #48b6c5;
+        color: white;
+    }
+
+    .add-medic-btn {
+            background-color: #48b6c5; /* Teal background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding around the text */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Mouse pointer on hover */
+            text-decoration: none; /* No underline */
+            font-size: 16px; /* Size of the text */
+            display: inline-block; /* Allows padding and width/height */
+            margin-top: 20px; /* Space above the button */
+            transition: background-color 0.3s; /* Smooth background color change on hover */
+        }
+
+        .add-medic-btn:hover {
+            background-color: #3a9ca1; /* Darker teal background on hover */
+        }
+    /* Additional styling can be added here */
+
+    .search-container {
+      text-align: left; /* Aligning the search container content to the left */
+      margin-bottom: 20px;
+      margin-left: 20px; /* Optional: Adding some left margin for better spacing */
+    }
+
+    .search-text {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .search-box {
+      padding: 8px;
+      width: 200px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+
+    .search-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #48b6c5;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .search-btn:hover {
+      background-color: #3a9ca1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <a href="/dashboard_administrator">Pagina principala</a>
+  <a href="/lista_pacienti">Pacienti</a>
+  <a href="/lista_medici">Medici</a>
+  <a href="/lista_analize">Analize</a>
+  <a href="/lista_categorii">Categorii</a>
+  <a href="/lista_buletine" class="active">Buletine analiza</a>
+  <a href="/lista_laboratoare">Laboratoare</a>
+  <a href="/logout">Logout</a>
+</div>
+
+<div class="content">
+
+  <h1>Rezultat cautare</h1>
+  <!-- Here you would have your table or list of patients -->
+  <div class="table-container">
+  <table>
+    <thead>
+        <tr>
+            <th>Nume pacient</th>
+            <th>Nume medic</th>
+            <th>Data recoltarii</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for buletin in buletine %}
+            <tr>
+                <td>{{buletin['nume_pacient']}}</td>
+                <td>{{buletin['nume_medic']}}</td>
+                <td>{{buletin['data_recoltarii']}}</td>
+            </tr>
+        {% endfor %}
+
+    </tbody>
+    </table>
+    </div>
+  
+<br> 
+<!---
+<div style="text-align: center;">
+    <a href="/adaugare_medic" class="add-medic-btn">Adaugare medic nou</a>
+</div>
+-->
+
+</div>  
+
+</body>
+</html>
